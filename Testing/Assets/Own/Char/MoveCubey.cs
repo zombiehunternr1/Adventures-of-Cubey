@@ -36,7 +36,6 @@ public class MoveCubey : MonoBehaviour
         RaycastHit p1;
 
         Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out p1, Mathf.Infinity);
-        Debug.Log(p1.distance);
 
         //rotate (I inverted the Axis (-5.0F) so that pressing left would actually send you left (or right for that matter))
         transform.Rotate(0, Input.GetAxis("Horizontal") * -5.0F, 0);
