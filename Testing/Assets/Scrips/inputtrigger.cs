@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class inputtrigger : MonoBehaviour
 {
+    public GameObject activatableObject;
+    private IActivatable activatable;
+
     //The audioClip triggersound is being used to check if the sound needs to be played
     public AudioClip triggersound;
 
@@ -18,6 +21,8 @@ public class inputtrigger : MonoBehaviour
     {
         //Gets the Audio source from the component AudioSource
         audioSource = GetComponent<AudioSource>();
+
+        activatable = activatableObject.GetComponent<IActivatable>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -25,8 +30,7 @@ public class inputtrigger : MonoBehaviour
         //Detect when the E arrow key is pressed down
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //Set the trigger boolean to true
-            trigger = true;
+            activatable.Trigger(gameObject);
             //This gets the rendercomponent
             Renderer render = GetComponent<Renderer>();
             //Sets the color of he rendercomponent to green
@@ -41,7 +45,6 @@ public class inputtrigger : MonoBehaviour
             {
                 //Plays the soundeffect only once
                 audioSource.PlayOneShot(triggersound, 0.2F);
-                trigger = false;
                 //sets the render color back to the original color
                 Renderer render = GetComponent<Renderer>();
                 render.material.color = Color.white;

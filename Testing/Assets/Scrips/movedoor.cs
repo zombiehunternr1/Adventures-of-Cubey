@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movedoor : MonoBehaviour
+public class MoveDoor : MonoBehaviour
 {
     //Creates a private boolean named active and is set to false
     private bool active = false;
@@ -15,7 +15,7 @@ public class movedoor : MonoBehaviour
     public bool Up;
     //Creates a public boxcollider called doorCollider
     public BoxCollider doorCollider;
-    //Creates a private float called targetY
+    //Y coordinates the door to the targeted Y position
     private float targetY; 
     
 
@@ -39,6 +39,18 @@ public class movedoor : MonoBehaviour
     public void startMove()
     {
         active = true;
+    }
+
+    //
+    public void open()
+    {
+        active = true;
+    }
+
+    //
+    public void close()
+    {
+        active = false;
     }
     // Update is called once per frame
     void Update()

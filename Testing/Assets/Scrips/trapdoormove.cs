@@ -14,7 +14,7 @@ public class trapdoormove : MonoBehaviour
     private trapdoortrigger trigger;
 
     //Creating a private doormoving with the information it gets from the script movedoor.cs
-    private movedoor doormoving;
+    private MoveDoor doormoving;
 
     //create a private interger called state that is set to 0
     private int state = 0;
@@ -26,7 +26,7 @@ public class trapdoormove : MonoBehaviour
         //set the panels as triggers
         trigger = panel.GetComponent(typeof(trapdoortrigger)) as trapdoortrigger;
         //set the doormoving as activatedoor
-        doormoving = activateDoor.GetComponent(typeof(movedoor)) as movedoor;
+        doormoving = activateDoor.GetComponent(typeof(MoveDoor)) as MoveDoor;
     }
 
     // Update is called once per frame
