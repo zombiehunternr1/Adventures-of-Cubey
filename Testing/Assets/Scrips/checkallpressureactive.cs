@@ -16,7 +16,7 @@ public class checkallpressureactive : MonoBehaviour
     private presureplatetrigger pressure2;
 
     //Creating a private doormoving with the information it gets from the script movedoor.cs
-    private MoveDoor doormoving;
+    private movedoor doormoving;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class checkallpressureactive : MonoBehaviour
         pressure1 = panel1.GetComponent(typeof(presureplatetrigger)) as presureplatetrigger;
         pressure2 = panel2.GetComponent(typeof(presureplatetrigger)) as presureplatetrigger;
         //set the doormoving as activatedoor
-        doormoving = activateDoor.GetComponent(typeof(MoveDoor)) as MoveDoor;
+        doormoving = activateDoor.GetComponent(typeof(movedoor)) as movedoor;
     }
 
     private void OnTriggerEnter(Collider other)
