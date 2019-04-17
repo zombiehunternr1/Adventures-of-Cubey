@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SlimeBossMechanics : MonoBehaviour
 {
-    private float nextSpawnTime;
 
-    private GameObject slimeMob;
+    public float NextSpawnTime;
+    public float spawnDelay = 3;
 
-    [SerializeField]
-    private float spawnDelay = 3;
+    public GameObject EnemySlime;
+    public Transform Spawnpoint;
+    public Vector3 Pos;
+    public Quaternion Rot;
+    
 
-    private void Awake()
-    {
-        var slime = Resources.Load("Assets / Own / Char / Enemy(slime).prefab");
-        slimeMob = slime as GameObject;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (shouldSpawn())
@@ -28,13 +24,15 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void spawn()
     {
-        nextSpawnTime = Time.time + spawnDelay;
-        Instantiate(slimeMob);
+        NextSpawnTime = Time.time + spawnDelay;
 
+        Pos = Spawnpoint.position;
+        Rot = Spawnpoint.rotation;
+        GameObject enemy = Instantiate(EnemySlime, Pos, Rot) as GameObject;
     }
 
-    private bool shouldSpawn()
+    private  bool shouldSpawn()
     {
-        return Time.time >= nextSpawnTime;
+        return Time.time > NextSpawnTime;
     }
 }
